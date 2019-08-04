@@ -1,22 +1,25 @@
-mod money {
+pub mod money {
     use std::cmp;
     use std::ops;
 
     #[derive(Debug, Copy, Clone)]
     pub struct Money {
-        amount: i64,
-        currency: &'static str,
+        pub amount: i64,
+        pub currency: &'static str,
     }
 
     impl Money {
         pub fn new(amount: i64, currency: &'static str) -> Money {
-            if amount < 0 {
-                panic!("Money amount cannot be less than zero");
-            }
-
             Money {
                 amount: amount,
                 currency: currency,
+            }
+        }
+
+        pub fn zero(currency: &'static str) -> Money {
+            Money {
+                amount: 0,
+                currency: currency
             }
         }
 
@@ -80,12 +83,6 @@ mod tests {
     use money::*;
 
     #[test]
-    #[should_panic]
-    fn it_should_panic_when_amount_is_negative_during_creation() {
-        Money::new(-1, "PLN");
-    }
-
-    #[test]
     fn it_adds_two_money_objects_correctly() {
         let money = Money::new(1, "PLN");
         let expected = Money::new(2, "PLN");
@@ -118,15 +115,6 @@ mod tests {
         let expected = Money::new(1, "PLN");
 
         assert_eq!(money1 - money2, expected)
-    }
-
-    #[test]
-    #[should_panic]
-    fn it_should_panic_when_amount_goes_below_zero() {
-        let money1 = Money::new(1, "PLN");
-        let money2 = Money::new(2, "PLN");
-
-        let _expected = money1 - money2;
     }
 
     #[test]
