@@ -1,5 +1,5 @@
 [package]
-name = "money-transfer"
+name = "moneytransfer"
 version = "0.1.0"
 authors = ["Jakub Zimny <zimny.jot@gmail.com>"]
 edition = "2018"

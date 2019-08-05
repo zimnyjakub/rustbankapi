@@ -26,3 +26,8 @@ pub fn schedule(transfer: Json<Transfer>) -> String {
     println!("{}", transfer.0);
     "yo".to_string()
 }
+
+#[get("/sanity")]
+pub fn sanity_check() -> String {
+    "i am sane".to_string()
+}
