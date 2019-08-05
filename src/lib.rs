@@ -1,2 +1,1 @@
-mod account;
-mod money;
+pub mod domain;
