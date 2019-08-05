@@ -1,4 +1,3 @@
-
 use crate::domain::money::Money;
 use uuid::Uuid;
 

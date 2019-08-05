@@ -3,19 +3,15 @@
 #[macro_use]
 extern crate rocket;
 #[macro_use]
-extern crate rocket_contrib;
-#[macro_use]
 extern crate serde_derive;
 
+mod domain;
 mod routes;
 
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
+pub fn rocket() -> rocket::Rocket {
+    rocket::ignite().mount("/", routes![routes::transfers::schedule])
 }
 
 fn main() {
-    rocket::ignite()
-        .mount("/", routes![index, routes::transfers::schedule])
-        .launch();
+    rocket().launch();
 }
